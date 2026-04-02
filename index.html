@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Classroom Online Portal</h1>
+      <p>Teacher and student dashboards for notes, tests, submissions, and doubts.</p>
+    </header>
+
+    <main>
+      <section id="login-section" class="card">
+        <h2>Login</h2>
+        <div class="grid-two">
+          <button id="teacher-mode-btn" class="secondary">Teacher Login</button>
+          <button id="student-mode-btn" class="secondary">Student Login</button>
+        </div>
+
+        <form id="teacher-login-form" class="hidden form-stack">
+          <label>
+            Username
+            <input type="text" id="teacher-username" placeholder="teacher" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="teacher-password" placeholder="admin123" required />
+          </label>
+          <button type="submit">Login as Teacher</button>
+        </form>
+
+        <form id="student-login-form" class="hidden form-stack">
+          <label>
+            Student ID
+            <input type="text" id="student-id" placeholder="e.g. S001" required />
+          </label>
+          <label>
+            Student Name
+            <input type="text" id="student-name" placeholder="e.g. Aanya" required />
+          </label>
+          <button type="submit">Login as Student</button>
+        </form>
+      </section>
+
+      <section id="teacher-dashboard" class="hidden">
+        <div class="card flex-between">
+          <h2>Teacher Dashboard</h2>
+          <button id="teacher-logout" class="secondary">Logout</button>
+        </div>
+
+        <div class="card">
+          <h3>Upload Notes / Test (PDF only)</h3>
+          <form id="upload-material-form" class="form-stack">
+            <label>
+              Student ID (individual)
+              <input type="text" id="material-student-id" required />
+            </label>
+            <label>
+              Student Name
+              <input type="text" id="material-student-name" required />
+            </label>
+            <label>
+              Type
+              <select id="material-type" required>
+                <option value="note">Note</option>
+                <option value="test">Test / Exam</option>
+                <option value="update">Update</option>
+              </select>
+            </label>
+            <label>
+              Title
+              <input type="text" id="material-title" required />
+            </label>
+            <label>
+              Description
+              <textarea id="material-description" rows="3" placeholder="Optional"></textarea>
+            </label>
+            <label>
+              Upload PDF
+              <input type="file" id="material-file" accept="application/pdf" required />
+            </label>
+            <button type="submit">Upload for Student</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Respond to Student Doubts</h3>
+          <form id="reply-doubt-form" class="form-stack">
+            <label>
+              Select Doubt
+              <select id="doubt-select" required></select>
+            </label>
+            <label>
+              Reply
+              <textarea id="doubt-reply" rows="3" required></textarea>
+            </label>
+            <button type="submit">Send Reply</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Student Submissions</h3>
+          <div id="teacher-submissions" class="list"></div>
+        </div>
+      </section>
+
+      <section id="student-dashboard" class="hidden">
+        <div class="card flex-between">
+          <h2 id="student-title">Student Dashboard</h2>
+          <button id="student-logout" class="secondary">Logout</button>
+        </div>
+
+        <div class="card">
+          <h3>Your Notes, Updates, and Tests</h3>
+          <div id="student-materials" class="list"></div>
+        </div>
+
+        <div class="card">
+          <h3>Upload Answer Sheet (PDF)</h3>
+          <form id="upload-answer-form" class="form-stack">
+            <label>
+              For Material
+              <select id="answer-material-select" required></select>
+            </label>
+            <label>
+              Upload Answer PDF
+              <input type="file" id="answer-file" accept="application/pdf" required />
+            </label>
+            <button type="submit">Upload Answer Sheet</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Ask a Doubt</h3>
+          <form id="ask-doubt-form" class="form-stack">
+            <label>
+              Doubt Message
+              <textarea id="doubt-message" rows="3" required></textarea>
+            </label>
+            <button type="submit">Submit Doubt</button>
+          </form>
+          <div id="doubt-history" class="list"></div>
+        </div>
+      </section>
+    </main>
+
+    <template id="item-template">
+      <article class="item"></article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
